@@ -10,6 +10,7 @@ import android.widget.TextView
 class FirstActivity : AppCompatActivity() {
 
     val RESULTADO_UNO = 1
+    val RESULTADO_DOS = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,21 +30,27 @@ class FirstActivity : AppCompatActivity() {
             //Iniciar la segunda actividad
             startActivityForResult(intent, RESULTADO_UNO)
 
+            startActivityForResult(intent, RESULTADO_DOS)
+
         }
 
     }
-    @Deprecated("Deprecated in Java")
+    @Deprecated("Deprecated a partir de API 30")
+
+    //recoje el internet cuando hacemos setResult() en la SecondActivity
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?){
         super.onActivityResult(requestCode, resultCode, data)
+        //Definimos el text view para mostrar el dato que nos manda la Second
 
        val saludo = findViewById<TextView>(R.id.textView3)
         if(resultCode != Activity.RESULT_OK)return
         when(requestCode){
             RESULTADO_UNO -> {
+                //Si el intent no es null muestra el resultado
                 if(data != null) {
                     saludo.text=data.getStringExtra("saludo")
-                }
-            }
+                }; }
+            //Other result code
             else -> {}
         }
     }
