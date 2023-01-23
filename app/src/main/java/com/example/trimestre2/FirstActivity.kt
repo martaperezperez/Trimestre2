@@ -11,7 +11,7 @@ import android.widget.TextView
 
 class FirstActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Blunde?){
+    override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
